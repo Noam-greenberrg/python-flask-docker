@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: python-flask-docker
 
 on:
   push:
@@ -16,3 +16,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: curl
+      uses: wei/curl@master
+      with:
+        args: http://localhost:8080
