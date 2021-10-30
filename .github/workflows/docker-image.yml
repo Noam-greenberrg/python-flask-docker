@@ -1,0 +1,9 @@
+
+name: container
+on: push
+
+jobs:
+  node-docker:
+    runs-on: ubuntu-latest
+    container:
+      image: Dockerfile
