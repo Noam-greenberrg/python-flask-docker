@@ -15,14 +15,16 @@ jobs:
     steps:
         - uses: actions/checkout@v2
           
-        - name: Docker Pull
-          run: docker pull lvthillo/python-flask-docker
+       # - name: Docker Pull
+      #    run: docker pull lvthillo/python-flask-docker
            
-        - name: Build the Docker image
-          run: docker build . --file Dockerfile
+        
              
         - name: Run the container
           run: docker run --name my-container -d -p 8080:8080 lvthillo/python-flask-docker
+          
+        - name: Build the Docker image
+          run: docker build . --file Dockerfile
           
         - name: curl
           uses: wei/curl@master
