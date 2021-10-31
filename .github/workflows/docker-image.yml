@@ -26,7 +26,7 @@ jobs:
           
         - name: Curl
           run: docker run --rm $(docker build -q .) \
-               https://localhost:8080
+               http://localhost:8080
           
         - name: Test ip
           run: docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' my-container
