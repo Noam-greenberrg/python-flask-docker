@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ master ]
 
-jobs:
+job1:
 
   build:
 
@@ -15,11 +15,13 @@ jobs:
     steps:
         - uses: actions/checkout@v2
         - name: Build the Docker image
-          id: step_one
-          run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-
+          run: docker build . --file Dockerfile
+job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
         - name: Test Url
-          id: step_two
+            run: |
               echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
               curl http://localhost:8080>> $GITHUB_ENV
               echo 'EOF' >> $GITHUB_ENV
