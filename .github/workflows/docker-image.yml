@@ -20,7 +20,7 @@ jobs:
         - name: curl
           uses: wei/curl@master
           with:
-            args: http://localhost:8080/index.html
+            args: http://localhost:8080
             
         - name: test
           run: echo index.html
