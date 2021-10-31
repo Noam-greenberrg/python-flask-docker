@@ -31,8 +31,7 @@ jobs:
              
         - name: Test Hostname
           run: docker inspect -f '{{ .Config.Hostname }}' my-container
-             
-             -
+
       #  - name: curl
        #   uses: wei/curl@master
         #  with:
