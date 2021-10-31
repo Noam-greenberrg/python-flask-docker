@@ -22,7 +22,7 @@ jobs:
         #  run: docker pull lvthillo/python-flask-docker
              
         - name: Run the container
-          run: docker run --name my-container -d -p 8080:8080 lvthillo/python-flask-docker
+          run: docker run --name my-container -d -p 8080:8080
           
         - name: curl
           uses: wei/curl@master
