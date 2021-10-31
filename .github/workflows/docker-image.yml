@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: python-flask-docker
 
 on:
   push:
@@ -9,15 +9,17 @@ on:
 jobs:
 
   build:
+
     runs-on: ubuntu-latest
-    
-container:
-  image: ./Dockerfile
-  
+
     steps:
-    - uses: actions/checkout@v2
-    - name: url
-      run: curl:http://localhost:8080
- 
+        - uses: actions/checkout@v2
+        - name: Build the Docker image
+          id: step_one
+          run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
 
-
+        - name: Test Url
+          id: step_two
+              echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
+              curl http://localhost:8080>> $GITHUB_ENV
+              echo 'EOF' >> $GITHUB_ENV
