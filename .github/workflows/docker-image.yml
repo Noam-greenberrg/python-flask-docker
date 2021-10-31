@@ -17,8 +17,6 @@ jobs:
           
         - name: Docker Pull
           run: docker pull lvthillo/python-flask-docker
-           
-        
              
         - name: Run the container
           run: docker run --name my-container -d -p 8080:8080 lvthillo/python-flask-docker
@@ -26,19 +24,13 @@ jobs:
         - name: Build the Docker image
           run: docker build . --file Dockerfile
           
-        - name: Build the Docker image
-          run: crul:http://localhost:8080
+        - name: curl
+          uses: wei/curl@master
+          with:
+           args: http://localhost:8080
           
         - name: Test ip
           run: docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' my-container
              
         - name: Test Hostname
           run: docker inspect -f '{{ .Config.Hostname }}' my-container
-
-      #  - name: curl
-       #   uses: wei/curl@master
-        #  with:
-         #   args: http://127.0.0.1:8080
-            
-      #  - name: test
-        #  run: echo index.html
