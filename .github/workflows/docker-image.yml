@@ -17,10 +17,13 @@ jobs:
         - name: Build the Docker image
           run: docker build . --file Dockerfile
           
+        - name: Run the container
+          run: docker run --name my-container -d -p 8080:8080 lvthillo/python-flask-docker
+          
         - name: curl
           uses: wei/curl@master
           with:
             args: http://localhost:8080
             
-        - name: test
-          run: echo index.html
+      #  - name: test
+        #  run: echo index.html
