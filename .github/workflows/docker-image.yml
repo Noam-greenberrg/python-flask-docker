@@ -24,12 +24,12 @@ jobs:
         - name: Build the Docker image
           run: docker build . --file Dockerfile
           
-        - name: Curl
-          run: curl http://localhost:8080/
+        - name: Test If App is Running ( Curl) 
+          run: curl -O  http://localhost:8080/
                
           
-        - name: Test ip
-          run: docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' my-container
+#         - name: Test ip
+#           run: docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' my-container
              
-        - name: Test Hostname
-          run: docker inspect -f '{{ .Config.Hostname }}' my-container
+#         - name: Test Hostname
+#           run: docker inspect -f '{{ .Config.Hostname }}' my-container
